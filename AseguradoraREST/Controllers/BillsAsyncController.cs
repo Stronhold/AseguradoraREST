@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AseguradoraREST.Models;
@@ -13,7 +14,7 @@ using AseguradoraREST.Service.DB;
 
 namespace AseguradoraREST.Controllers
 {
-    public class BillsController : ApiController
+    public class BillsAsyncController : ApiController
     {
         private AseguradoraRESTContext db = new AseguradoraRESTContext();
 
@@ -21,7 +22,7 @@ namespace AseguradoraREST.Controllers
         /// Gets all the bills
         /// </summary>
         /// <returns>The bills</returns>
-        // GET: api/Bills
+        // GET: api/BillsAsync
         public IQueryable<Bill> GetBills()
         {
             return db.Bills;
@@ -32,11 +33,11 @@ namespace AseguradoraREST.Controllers
         /// </summary>
         /// <param name="id">ID of the bill to recover</param>
         /// <returns>A bill</returns>
-        // GET: api/Bills/5
+        // GET: api/BillsAsync/5
         [ResponseType(typeof(Bill))]
-        public IHttpActionResult GetBill(int id)
+        public async Task<IHttpActionResult> GetBill(int id)
         {
-            Bill bill = db.Bills.Find(id);
+            Bill bill = await db.Bills.FindAsync(id);
             if (bill == null)
             {
                 return NotFound();
@@ -51,9 +52,9 @@ namespace AseguradoraREST.Controllers
         /// <param name="id">ID of the bill to update</param>
         /// <param name="bill">The new bill</param>
         /// <returns>An http result</returns>
-        // PUT: api/Bills/5
+        // PUT: api/BillsAsync/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutBill(int id, Bill bill)
+        public async Task<IHttpActionResult> PutBill(int id, Bill bill)
         {
             if (!ModelState.IsValid)
             {
@@ -69,7 +70,7 @@ namespace AseguradoraREST.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -91,9 +92,9 @@ namespace AseguradoraREST.Controllers
         /// </summary>
         /// <param name="bill">Bill to add</param>
         /// <returns>An http result</returns>
-        // POST: api/Bills
+        // POST: api/BillsAsync
         [ResponseType(typeof(Bill))]
-        public IHttpActionResult PostBill(Bill bill)
+        public async Task<IHttpActionResult> PostBill(Bill bill)
         {
             if (!ModelState.IsValid)
             {
@@ -101,7 +102,7 @@ namespace AseguradoraREST.Controllers
             }
 
             db.Bills.Add(bill);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = bill.ID }, bill);
         }
@@ -111,18 +112,18 @@ namespace AseguradoraREST.Controllers
         /// </summary>
         /// <param name="id">Id of the bill to delete</param>
         /// <returns>An http result</returns>
-        // DELETE: api/Bills/5
+        // DELETE: api/BillsAsync/5
         [ResponseType(typeof(Bill))]
-        public IHttpActionResult DeleteBill(int id)
+        public async Task<IHttpActionResult> DeleteBill(int id)
         {
-            Bill bill = db.Bills.Find(id);
+            Bill bill = await db.Bills.FindAsync(id);
             if (bill == null)
             {
                 return NotFound();
             }
 
             db.Bills.Remove(bill);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(bill);
         }

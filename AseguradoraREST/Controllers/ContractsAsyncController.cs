@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AseguradoraREST.Models;
@@ -13,7 +14,7 @@ using AseguradoraREST.Service.DB;
 
 namespace AseguradoraREST.Controllers
 {
-    public class ContractsController : ApiController
+    public class ContractsAsyncController : ApiController
     {
         private AseguradoraRESTContext db = new AseguradoraRESTContext();
 
@@ -21,7 +22,7 @@ namespace AseguradoraREST.Controllers
         /// Returns all the contracts 
         /// </summary>
         /// <returns>All the contracts</returns>
-        // GET: api/Contracts
+        // GET: api/ContractsAsync
         public IQueryable<Contract> GetContracts()
         {
             return db.Contracts;
@@ -32,11 +33,11 @@ namespace AseguradoraREST.Controllers
         /// </summary>
         /// <param name="id">ID of the contract</param>
         /// <returns>An http result</returns>
-        // GET: api/Contracts/5
+        // GET: api/ContractsAsync/5
         [ResponseType(typeof(Contract))]
-        public IHttpActionResult GetContract(int id)
+        public async Task<IHttpActionResult> GetContract(int id)
         {
-            Contract contract = db.Contracts.Find(id);
+            Contract contract = await db.Contracts.FindAsync(id);
             if (contract == null)
             {
                 return NotFound();
@@ -51,9 +52,9 @@ namespace AseguradoraREST.Controllers
         /// <param name="id">ID of the contract</param>
         /// <param name="contract">Contract updated</param>
         /// <returns>An http result</returns>
-        // PUT: api/Contracts/5
+        // PUT: api/ContractsAsync/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutContract(int id, Contract contract)
+        public async Task<IHttpActionResult> PutContract(int id, Contract contract)
         {
             if (!ModelState.IsValid)
             {
@@ -69,7 +70,7 @@ namespace AseguradoraREST.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -91,9 +92,9 @@ namespace AseguradoraREST.Controllers
         /// </summary>
         /// <param name="contract">The contract</param>
         /// <returns>An http result</returns>
-        // POST: api/Contracts
+        // POST: api/ContractsAsync
         [ResponseType(typeof(Contract))]
-        public IHttpActionResult PostContract(Contract contract)
+        public async Task<IHttpActionResult> PostContract(Contract contract)
         {
             if (!ModelState.IsValid)
             {
@@ -101,7 +102,7 @@ namespace AseguradoraREST.Controllers
             }
 
             db.Contracts.Add(contract);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = contract.ID }, contract);
         }
@@ -112,18 +113,17 @@ namespace AseguradoraREST.Controllers
         /// <param name="contract">The contract</param>
         /// <returns>An http result</returns>
         // DELETE: api/ContractsAsync/5
-        // DELETE: api/Contracts/5
         [ResponseType(typeof(Contract))]
-        public IHttpActionResult DeleteContract(int id)
+        public async Task<IHttpActionResult> DeleteContract(int id)
         {
-            Contract contract = db.Contracts.Find(id);
+            Contract contract = await db.Contracts.FindAsync(id);
             if (contract == null)
             {
                 return NotFound();
             }
 
             db.Contracts.Remove(contract);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(contract);
         }

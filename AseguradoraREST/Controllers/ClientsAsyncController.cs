@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AseguradoraREST.Models;
@@ -13,7 +14,7 @@ using AseguradoraREST.Service.DB;
 
 namespace AseguradoraREST.Controllers
 {
-    public class ClientsController : ApiController
+    public class ClientsAsyncController : ApiController
     {
         private AseguradoraRESTContext db = new AseguradoraRESTContext();
 
@@ -21,7 +22,7 @@ namespace AseguradoraREST.Controllers
         /// Get all the clients
         /// </summary>
         /// <returns>All the clients</returns>
-        // GET: api/Clients
+        // GET: api/ClientsAsync
         public IQueryable<Client> GetClients()
         {
             return db.Clients;
@@ -32,11 +33,11 @@ namespace AseguradoraREST.Controllers
         /// </summary>
         /// <param name="id">ID of the client to return</param>
         /// <returns>A client</returns>
-        // GET: api/Clients/5
+        // GET: api/ClientsAsync/5
         [ResponseType(typeof(Client))]
-        public IHttpActionResult GetClient(int id)
+        public async Task<IHttpActionResult> GetClient(int id)
         {
-            Client client = db.Clients.Find(id);
+            Client client = await db.Clients.FindAsync(id);
             if (client == null)
             {
                 return NotFound();
@@ -45,16 +46,15 @@ namespace AseguradoraREST.Controllers
             return Ok(client);
         }
 
-
         /// <summary>
         /// Updates a client
         /// </summary>
         /// <param name="id">ID of the client</param>
         /// <param name="client">Client updated</param>
         /// <returns></returns>
-        // PUT: api/Clients/5
+        // PUT: api/ClientsAsync/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutClient(int id, Client client)
+        public async Task<IHttpActionResult> PutClient(int id, Client client)
         {
             if (!ModelState.IsValid)
             {
@@ -70,7 +70,7 @@ namespace AseguradoraREST.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -92,9 +92,9 @@ namespace AseguradoraREST.Controllers
         /// </summary>
         /// <param name="client">Client to add</param>
         /// <returns>HTTP result</returns>
-        // POST: api/Clients
+        // POST: api/ClientsAsync
         [ResponseType(typeof(Client))]
-        public IHttpActionResult PostClient(Client client)
+        public async Task<IHttpActionResult> PostClient(Client client)
         {
             if (!ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace AseguradoraREST.Controllers
             }
 
             db.Clients.Add(client);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = client.ID }, client);
         }
@@ -112,18 +112,18 @@ namespace AseguradoraREST.Controllers
         /// </summary>
         /// <param name="id">ID of the client</param>
         /// <returns>HTTP result</returns>
-        // DELETE: api/Clients/5
+        // DELETE: api/ClientsAsync/5
         [ResponseType(typeof(Client))]
-        public IHttpActionResult DeleteClient(int id)
+        public async Task<IHttpActionResult> DeleteClient(int id)
         {
-            Client client = db.Clients.Find(id);
+            Client client = await db.Clients.FindAsync(id);
             if (client == null)
             {
                 return NotFound();
             }
 
             db.Clients.Remove(client);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(client);
         }
