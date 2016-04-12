@@ -12,15 +12,18 @@ namespace AseguradoraREST.Models.Validation
     {
         public static ValidationResult DNICorrectlyFormed(string dni)
         {
-            int number = 0;
-            bool numeric = int.TryParse(dni.Substring(0, dni.Length - 2), out number);
-            if (numeric)
+            if (dni.Length == 9)
             {
-                string last = dni.Substring(dni.Length - 1);
-                numeric = int.TryParse(last, out number);
-                if (!numeric)
+                int number = 0;
+                bool numeric = int.TryParse(dni.Substring(0, dni.Length - 2), out number);
+                if (numeric)
                 {
-                    return ValidationResult.Success;
+                    string last = dni.Substring(dni.Length - 1);
+                    numeric = int.TryParse(last, out number);
+                    if (!numeric)
+                    {
+                        return ValidationResult.Success;
+                    }
                 }
             }
             return new ValidationResult("DNI malformed");

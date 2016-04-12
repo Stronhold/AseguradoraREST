@@ -100,6 +100,13 @@ namespace AseguradoraREST.Controllers
             {
                 return BadRequest(ModelState);
             }
+            Client cl = contract.client;
+            if (cl.Contracts == null)
+            {
+                cl.Contracts = new List<Contract>();
+            }
+            cl.Contracts.Add(contract);
+            db.Entry(cl).State = EntityState.Modified;
 
             db.Contracts.Add(contract);
             await db.SaveChangesAsync();

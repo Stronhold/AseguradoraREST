@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -100,7 +101,13 @@ namespace AseguradoraREST.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            Client cl = bill.Client;
+            if (cl.Bills == null)
+            {
+                cl.Bills = new List<Bill>();
+            }
+            cl.Bills.Add(bill);
+            db.Entry(cl).State = EntityState.Modified;
             db.Bills.Add(bill);
             await db.SaveChangesAsync();
 
