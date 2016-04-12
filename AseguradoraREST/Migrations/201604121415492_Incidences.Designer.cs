@@ -7,13 +7,13 @@ namespace AseguradoraREST.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class initial : IMigrationMetadata
+    public sealed partial class Incidences : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Incidences));
         
         string IMigrationMetadata.Id
         {
-            get { return "201603221439462_initial"; }
+            get { return "201604121415492_Incidences"; }
         }
         
         string IMigrationMetadata.Source

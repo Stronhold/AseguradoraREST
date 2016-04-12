@@ -28,5 +28,6 @@ namespace AseguradoraREST.Service.DB
 
         public DbSet<Client> Clients { get; set; }
 
+        public System.Data.Entity.DbSet<AseguradoraREST.Models.Incidence> Incidences { get; set; }
     }
 }

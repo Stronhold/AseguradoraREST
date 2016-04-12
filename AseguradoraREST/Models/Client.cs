@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace AseguradoraREST.Models
 {
@@ -35,6 +37,11 @@ namespace AseguradoraREST.Models
         /// List of contracts that a client has signed
         /// </summary>
         public virtual ICollection<Contract> Contracts { get; set; }
+
+        /// <summary>
+        /// List of incidences that a client has registered
+        /// </summary>
+        public virtual ICollection<Incidence> Incidences { get; set; } 
 
     }
 }

@@ -586,6 +586,11 @@
             <param name="id">ID of the client</param>
             <returns>HTTP result</returns>
         </member>
+        <member name="T:AseguradoraREST.Controllers.ClientsController">
+            <summary>
+            Controller de los clientes
+            </summary>
+        </member>
         <member name="M:AseguradoraREST.Controllers.ClientsController.GetClients">
             <summary>
             Get all the clients
@@ -741,6 +746,11 @@
             List of contracts that a client has signed
             </summary>
         </member>
+        <member name="P:AseguradoraREST.Models.Client.Incidences">
+            <summary>
+            List of incidences that a client has registered
+            </summary>
+        </member>
         <member name="T:AseguradoraREST.Models.Contract">
             <summary>
             Contracts
@@ -765,6 +775,15 @@
             <summary>
             Type of policy
             </summary>
+        </member>
+        <member name="M:AseguradoraREST.Models.Incidence.#ctor(System.Int32,System.String,System.String,AseguradoraREST.Models.Client)">
+            <summary>
+            
+            </summary>
+            <param name="i"></param>
+            <param name="n"></param>
+            <param name="d"></param>
+            <param name="c"></param>
         </member>
         <member name="T:AseguradoraREST.Models.Policy">
             <summary>

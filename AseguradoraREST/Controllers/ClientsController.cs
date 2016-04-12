@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AseguradoraREST.Models;
@@ -13,9 +9,12 @@ using AseguradoraREST.Service.DB;
 
 namespace AseguradoraREST.Controllers
 {
+    /// <summary>
+    /// Controller de los clientes
+    /// </summary>
     public class ClientsController : ApiController
     {
-        private AseguradoraRESTContext db = new AseguradoraRESTContext();
+        private readonly AseguradoraRESTContext _db = new AseguradoraRESTContext();
 
         /// <summary>
         /// Get all the clients
@@ -24,7 +23,7 @@ namespace AseguradoraREST.Controllers
         // GET: api/Clients
         public IQueryable<Client> GetClients()
         {
-            return db.Clients;
+            return _db.Clients;
         }
 
         /// <summary>
@@ -36,7 +35,7 @@ namespace AseguradoraREST.Controllers
         [ResponseType(typeof(Client))]
         public IHttpActionResult GetClient(int id)
         {
-            Client client = db.Clients.Find(id);
+            Client client = _db.Clients.Find(id);
             if (client == null)
             {
                 return NotFound();
@@ -66,11 +65,11 @@ namespace AseguradoraREST.Controllers
                 return BadRequest();
             }
 
-            db.Entry(client).State = EntityState.Modified;
+            _db.Entry(client).State = EntityState.Modified;
 
             try
             {
-                db.SaveChanges();
+                _db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -101,8 +100,8 @@ namespace AseguradoraREST.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Clients.Add(client);
-            db.SaveChanges();
+            _db.Clients.Add(client);
+            _db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = client.ID }, client);
         }
@@ -116,14 +115,14 @@ namespace AseguradoraREST.Controllers
         [ResponseType(typeof(Client))]
         public IHttpActionResult DeleteClient(int id)
         {
-            Client client = db.Clients.Find(id);
+            Client client = _db.Clients.Find(id);
             if (client == null)
             {
                 return NotFound();
             }
 
-            db.Clients.Remove(client);
-            db.SaveChanges();
+            _db.Clients.Remove(client);
+            _db.SaveChanges();
 
             return Ok(client);
         }
@@ -132,14 +131,14 @@ namespace AseguradoraREST.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool ClientExists(int id)
         {
-            return db.Clients.Count(e => e.ID == id) > 0;
+            return _db.Clients.Count(e => e.ID == id) > 0;
         }
     }
 }

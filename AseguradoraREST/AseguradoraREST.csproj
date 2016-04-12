@@ -197,20 +197,28 @@
     <Compile Include="Controllers\BillsController.cs" />
     <Compile Include="Controllers\ClientsAsyncController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\ClientsMVCController.cs" />
     <Compile Include="Controllers\ContractsAsyncController.cs" />
     <Compile Include="Controllers\ContractsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IncidencesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603221439462_initial.cs" />
-    <Compile Include="Migrations\201603221439462_initial.Designer.cs">
-      <DependentUpon>201603221439462_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201604121411019_initial.cs" />
+    <Compile Include="Migrations\201604121411019_initial.Designer.cs">
+      <DependentUpon>201604121411019_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604121415492_Incidences.cs" />
+    <Compile Include="Migrations\201604121415492_Incidences.Designer.cs">
+      <DependentUpon>201604121415492_Incidences.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Contract.cs" />
+    <Compile Include="Models\Incidence.cs" />
+    <Compile Include="Models\IncidenceCreate.cs" />
     <Compile Include="Models\Policy.cs" />
     <Compile Include="Models\Validation\DNIValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -270,11 +278,16 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603221439462_initial.resx">
-      <DependentUpon>201603221439462_initial.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Views\ClientsMVC\Create.cshtml" />
+    <Content Include="Views\ClientsMVC\Delete.cshtml" />
+    <Content Include="Views\ClientsMVC\Details.cshtml" />
+    <Content Include="Views\ClientsMVC\Edit.cshtml" />
+    <Content Include="Views\ClientsMVC\Index.cshtml" />
+    <Content Include="Views\Incidences\Create.cshtml" />
+    <Content Include="Views\Incidences\Delete.cshtml" />
+    <Content Include="Views\Incidences\Details.cshtml" />
+    <Content Include="Views\Incidences\Edit.cshtml" />
+    <Content Include="Views\Incidences\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -283,6 +296,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604121411019_initial.resx">
+      <DependentUpon>201604121411019_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604121415492_Incidences.resx">
+      <DependentUpon>201604121415492_Incidences.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
