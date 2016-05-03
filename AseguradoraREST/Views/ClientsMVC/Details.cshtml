@@ -1,7 +1,8 @@
-﻿@model AseguradoraREST.Models.Client
+﻿@using AseguradoraREST.Models
+@model AseguradoraREST.Models.Client
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Client Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -27,21 +28,49 @@
             @Html.DisplayFor(model => model.DNI)
         </dd>
         <dd>
-            
+
             @if (Model.Incidences.Count > 0)
             {
+                <br />
+                <b>Lista de incidencias</b>
+                <table class="table">
 
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th></th>
+
+                    @foreach (var incidence in Model.Incidences)
+                    {
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => incidence.name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => @incidence.description)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Show Details", "Details", "Incidences", new { id = incidence.Id }, null)
+                        </td>
+                    </tr>
+                    }
+
+                </table>
             }
             else
             {
-                <dd>
-                    <b>There are not incidences registeres for this client</b>
-                </dd>
+            <dd>
+                <b>There are not incidences registeres for this client</b>
+            </dd>
             }
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

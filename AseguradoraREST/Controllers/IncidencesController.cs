@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
+using System.Net.Mime;
 using System.Web;
 using System.Web.Mvc;
 using AseguradoraREST.Models;
@@ -38,8 +39,14 @@ namespace AseguradoraREST.Controllers
         }
 
         // GET: Incidences/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            var clients = await db.Clients.ToListAsync();
+            var dnis = clients.Select(c => new SelectListItem()
+            {
+                Text = c.DNI
+            });
+            ViewBag.dnis = dnis;
             return View();
         }
 
@@ -48,11 +55,11 @@ namespace AseguradoraREST.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,name,description, dni")] IncidenceCreate incidence)
+        public async Task<ActionResult> Create([Bind(Include = "Id,name,description")] Incidence incidence, string dnis)
         {
             if (ModelState.IsValid)
             {
-                Client client = await db.Clients.Where(b => b.DNI == incidence.dni).FirstOrDefaultAsync();
+                Client client = await db.Clients.Where(b => b.DNI == dnis).FirstOrDefaultAsync();
                 if (client != null)
                 {
                     db.Entry(client).State = EntityState.Modified;

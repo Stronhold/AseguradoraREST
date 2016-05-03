@@ -23,6 +23,7 @@ namespace AseguradoraREST.Models
         /// <summary>
         /// Name of the client
         /// </summary>
+        [Display(Name = "Client's name")]
         public string name { get; set; }
         /// <summary>
         /// DNI of the client

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,7 @@ namespace AseguradoraREST.Models
     public class Incidence
     {
         public int Id { get; set; }
+        [Display(Name = "Incidence's name")]
         public string name { get; set; }
         public string description { get; set; }
 
