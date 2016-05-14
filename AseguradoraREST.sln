@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AseguradoraREST", "AseguradoraREST\AseguradoraREST.csproj", "{951924E7-2DEF-4D37-8B1B-FE0C68250947}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8AC81341-32CB-4AFC-94CC-1B20B56F1F63} = {8AC81341-32CB-4AFC-94CC-1B20B56F1F63}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aseguradora", "..\AseguradoraSOAPService\Aseguradora\Aseguradora.csproj", "{8AC81341-32CB-4AFC-94CC-1B20B56F1F63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{951924E7-2DEF-4D37-8B1B-FE0C68250947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{951924E7-2DEF-4D37-8B1B-FE0C68250947}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{951924E7-2DEF-4D37-8B1B-FE0C68250947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AC81341-32CB-4AFC-94CC-1B20B56F1F63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AC81341-32CB-4AFC-94CC-1B20B56F1F63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AC81341-32CB-4AFC-94CC-1B20B56F1F63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AC81341-32CB-4AFC-94CC-1B20B56F1F63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
