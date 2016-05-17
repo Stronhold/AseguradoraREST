@@ -204,6 +204,8 @@
     <Compile Include="Controllers\ContractsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncidencesController.cs" />
+    <Compile Include="Controllers\PoliciesAPIController.cs" />
+    <Compile Include="Controllers\PoliciesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -224,7 +226,7 @@
     <Compile Include="Models\Policy.cs" />
     <Compile Include="Models\Validation\DNIValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\ServiceReference1\Reference.cs">
+    <Compile Include="Service References\ServicePolicy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -270,12 +272,12 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Service References\ServiceReference1\AseguradoraREST.ServiceReference1.Policy.datasource">
+    <Content Include="Service References\ServicePolicy\AseguradoraREST.ServicePolicy.Policy.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
-    <None Include="Service References\ServiceReference1\Reference.svcmap">
+    <None Include="Service References\ServicePolicy\configuration91.svcinfo" />
+    <None Include="Service References\ServicePolicy\configuration.svcinfo" />
+    <None Include="Service References\ServicePolicy\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -304,19 +306,21 @@
     <Content Include="Views\Incidences\Details.cshtml" />
     <Content Include="Views\Incidences\Edit.cshtml" />
     <Content Include="Views\Incidences\Index.cshtml" />
-    <None Include="Service References\ServiceReference1\Arrays.xsd">
+    <None Include="Service References\ServicePolicy\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Aseguradora.xsd">
+    <None Include="Service References\ServicePolicy\Aseguradora.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\service.wsdl" />
-    <None Include="Service References\ServiceReference1\service.xsd">
+    <None Include="Service References\ServicePolicy\service.wsdl" />
+    <None Include="Service References\ServicePolicy\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\service1.xsd">
+    <None Include="Service References\ServicePolicy\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Policies\Index.cshtml" />
+    <Content Include="Views\Policies\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -338,7 +342,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+    <WCFMetadataStorage Include="Service References\ServicePolicy\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

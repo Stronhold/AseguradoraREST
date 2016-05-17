@@ -14,12 +14,6 @@
   <wsdl:message name="IServicePolicy_GetData_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDataResponse" />
   </wsdl:message>
-  <wsdl:message name="IServicePolicy_GetDataUsingDataContract_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
-  </wsdl:message>
-  <wsdl:message name="IServicePolicy_GetDataUsingDataContract_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
-  </wsdl:message>
   <wsdl:message name="IServicePolicy_GetAllPolicies_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPolicies" />
   </wsdl:message>
@@ -55,10 +49,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicy/GetData" message="tns:IServicePolicy_GetData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicy/GetDataResponse" message="tns:IServicePolicy_GetData_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicy/GetDataUsingDataContract" message="tns:IServicePolicy_GetDataUsingDataContract_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicy/GetDataUsingDataContractResponse" message="tns:IServicePolicy_GetDataUsingDataContract_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetAllPolicies">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicy/GetAllPolicies" message="tns:IServicePolicy_GetAllPolicies_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicy/GetAllPoliciesResponse" message="tns:IServicePolicy_GetAllPolicies_OutputMessage" />
@@ -84,15 +74,6 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetData">
       <soap:operation soapAction="http://tempuri.org/IServicePolicy/GetData" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <soap:operation soapAction="http://tempuri.org/IServicePolicy/GetDataUsingDataContract" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

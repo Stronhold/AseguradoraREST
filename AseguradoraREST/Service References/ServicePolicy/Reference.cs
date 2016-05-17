@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AseguradoraREST.ServiceReference1 {
+namespace AseguradoraREST.ServicePolicy {
     using System.Runtime.Serialization;
     using System;
     
@@ -107,26 +107,20 @@ namespace AseguradoraREST.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IServicePolicy")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServicePolicy.IServicePolicy")]
     public interface IServicePolicy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicy/GetData", ReplyAction="http://tempuri.org/IServicePolicy/GetDataResponse")]
-        AseguradoraREST.ServiceReference1.Policy GetData(int id);
+        AseguradoraREST.ServicePolicy.Policy GetData(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicy/GetData", ReplyAction="http://tempuri.org/IServicePolicy/GetDataResponse")]
-        System.Threading.Tasks.Task<AseguradoraREST.ServiceReference1.Policy> GetDataAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicy/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IServicePolicy/GetDataUsingDataContractResponse")]
-        AseguradoraREST.ServiceReference1.Policy GetDataUsingDataContract(AseguradoraREST.ServiceReference1.Policy composite);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicy/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IServicePolicy/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<AseguradoraREST.ServiceReference1.Policy> GetDataUsingDataContractAsync(AseguradoraREST.ServiceReference1.Policy composite);
+        System.Threading.Tasks.Task<AseguradoraREST.ServicePolicy.Policy> GetDataAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicy/GetAllPolicies", ReplyAction="http://tempuri.org/IServicePolicy/GetAllPoliciesResponse")]
-        AseguradoraREST.ServiceReference1.Policy[] GetAllPolicies();
+        AseguradoraREST.ServicePolicy.Policy[] GetAllPolicies();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicy/GetAllPolicies", ReplyAction="http://tempuri.org/IServicePolicy/GetAllPoliciesResponse")]
-        System.Threading.Tasks.Task<AseguradoraREST.ServiceReference1.Policy[]> GetAllPoliciesAsync();
+        System.Threading.Tasks.Task<AseguradoraREST.ServicePolicy.Policy[]> GetAllPoliciesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicy/GetAllID", ReplyAction="http://tempuri.org/IServicePolicy/GetAllIDResponse")]
         int[] GetAllID();
@@ -154,12 +148,12 @@ namespace AseguradoraREST.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServicePolicyChannel : AseguradoraREST.ServiceReference1.IServicePolicy, System.ServiceModel.IClientChannel {
+    public interface IServicePolicyChannel : AseguradoraREST.ServicePolicy.IServicePolicy, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServicePolicyClient : System.ServiceModel.ClientBase<AseguradoraREST.ServiceReference1.IServicePolicy>, AseguradoraREST.ServiceReference1.IServicePolicy {
+    public partial class ServicePolicyClient : System.ServiceModel.ClientBase<AseguradoraREST.ServicePolicy.IServicePolicy>, AseguradoraREST.ServicePolicy.IServicePolicy {
         
         public ServicePolicyClient() {
         }
@@ -180,27 +174,19 @@ namespace AseguradoraREST.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public AseguradoraREST.ServiceReference1.Policy GetData(int id) {
+        public AseguradoraREST.ServicePolicy.Policy GetData(int id) {
             return base.Channel.GetData(id);
         }
         
-        public System.Threading.Tasks.Task<AseguradoraREST.ServiceReference1.Policy> GetDataAsync(int id) {
+        public System.Threading.Tasks.Task<AseguradoraREST.ServicePolicy.Policy> GetDataAsync(int id) {
             return base.Channel.GetDataAsync(id);
         }
         
-        public AseguradoraREST.ServiceReference1.Policy GetDataUsingDataContract(AseguradoraREST.ServiceReference1.Policy composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
-        }
-        
-        public System.Threading.Tasks.Task<AseguradoraREST.ServiceReference1.Policy> GetDataUsingDataContractAsync(AseguradoraREST.ServiceReference1.Policy composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
-        }
-        
-        public AseguradoraREST.ServiceReference1.Policy[] GetAllPolicies() {
+        public AseguradoraREST.ServicePolicy.Policy[] GetAllPolicies() {
             return base.Channel.GetAllPolicies();
         }
         
-        public System.Threading.Tasks.Task<AseguradoraREST.ServiceReference1.Policy[]> GetAllPoliciesAsync() {
+        public System.Threading.Tasks.Task<AseguradoraREST.ServicePolicy.Policy[]> GetAllPoliciesAsync() {
             return base.Channel.GetAllPoliciesAsync();
         }
         

@@ -16,20 +16,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetDataUsingDataContract">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Aseguradora" minOccurs="0" name="composite" nillable="true" type="q2:Policy" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDataUsingDataContractResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Aseguradora" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q3:Policy" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetAllPolicies">
     <xs:complexType>
       <xs:sequence />
@@ -38,7 +24,7 @@
   <xs:element name="GetAllPoliciesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Aseguradora" minOccurs="0" name="GetAllPoliciesResult" nillable="true" type="q4:ArrayOfPolicy" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Aseguradora" minOccurs="0" name="GetAllPoliciesResult" nillable="true" type="q2:ArrayOfPolicy" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -50,7 +36,7 @@
   <xs:element name="GetAllIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllIDResult" nillable="true" type="q5:ArrayOfint" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllIDResult" nillable="true" type="q3:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

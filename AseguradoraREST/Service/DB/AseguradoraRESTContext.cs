@@ -22,11 +22,13 @@ namespace AseguradoraREST.Service.DB
 
         public DbSet<Bill> Bills { get; set; }
 
-        public DbSet<Policy> Policies { get; set; }
+        //public DbSet<Policy> Policies { get; set; }
 
         public DbSet<Contract> Contracts { get; set; }
 
         public DbSet<Client> Clients { get; set; }
+
+        public DbSet<Policy> Policies { get; set; }
 
         public System.Data.Entity.DbSet<AseguradoraREST.Models.Incidence> Incidences { get; set; }
     }
