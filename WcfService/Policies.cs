@@ -33,5 +33,10 @@ namespace WcfService
             description = d;
             type = t;
         }
+
+        public Policies()
+        {
+            
+        }
     }
 }

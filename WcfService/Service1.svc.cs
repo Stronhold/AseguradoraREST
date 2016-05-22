@@ -23,10 +23,6 @@ namespace WcfService
                 e = new Entities();
             }
         }
-        public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
@@ -46,11 +42,12 @@ namespace WcfService
             Init();
             var p = new Policies(i, n, d, y);
             /*How to add*/
-            //e.Set<Policies>().Add(p);
+            //e.Set<Policies>().Add(p);9
             //e.SaveChanges();
-            var s = from abc in e.Policies select abc;
+            var s = from abc in e.Policies where abc.ID > 0 select abc;
+            var policy = e.Policies.Find(1);
             //e.Policies.Find(1);
-         //   var asd = s.;
+            //   var asd = s.;
             /*How to update*/
             //e.Policies.Attach(p);
             //p.description = "smth";
@@ -60,6 +57,70 @@ namespace WcfService
             //e.Set<Policies>().Remove(p);
             //e.SaveChanges();
             e.SaveChanges();
+
+        }
+
+        public bool AddPolicy(int id, string name, string desc, string type)
+        {
+            Init();
+            var policy = new Policies(id, name, desc, type);
+            var pol = e.Policies.Select(p => p.ID == id).Where(r => r == true);
+            if (pol.Any()) return false;
+            e.Policies.Add(policy);
+            e.SaveChanges();
+            return true;
+        }
+
+        public int[] GetAllID()
+        { 
+        Init();
+            var ids = from p in e.Policies select p.ID;
+
+            return ids.ToArray();
+        }
+
+        public Policies[] GetAllPolicies()
+        {
+            Init();
+            var policies = from p in e.Policies select p;
+            return policies.ToArray();
+        }
+
+        public Policies GetData(int id)
+        {
+            Init();
+            var policies = e.Policies.Find(id);
+            return policies;
+        }
+
+        public bool RemovePolicy(int id)
+        {
+            Init();
+            var policy = e.Policies.Find(id);
+            if (policy != null)
+            {
+                e.Policies.Remove(policy);
+                e.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public bool UpdatePolicy(int id, string name, string desc, string type)
+        {
+            Init();
+            var policy = e.Policies.Find(id);
+            if (policy != null)
+            {
+                e.Entry(policy).State = EntityState.Modified;
+                policy.name = name;
+                policy.description = desc;
+                policy.type = type;
+                e.SaveChanges();
+            }
+            return false;
         }
     }
+
+
 }

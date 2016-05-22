@@ -14,13 +14,28 @@ namespace WcfService
     {
 
         [OperationContract]
-        string GetData(int value);
+        Policies GetData(int value);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         [OperationContract]
         void AddPolicie(int i, string n, string d, string y);
+
+        [OperationContract]
+        Policies[] GetAllPolicies();
+
+        [OperationContract]
+        int[] GetAllID();
+
+        [OperationContract]
+        bool AddPolicy(int id, string name, string desc, string type);
+
+        [OperationContract]
+        bool RemovePolicy(int id);
+
+        [OperationContract]
+        bool UpdatePolicy(int id, string name, string desc, string type);
 
         // TODO: agregue aquí sus operaciones de servicio
     }

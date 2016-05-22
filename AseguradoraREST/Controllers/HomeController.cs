@@ -12,8 +12,6 @@ namespace AseguradoraREST.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-            ServiceReference1.Service1Client sc = new Service1Client();
-            sc.AddPolicie(1, "andres", "fonk", "mola");
             return View();
         }
     }
